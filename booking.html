@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Table — Divine Restaurant</title>
+  <meta name="description" content="Reserve a table at Divine Restaurant. Choose your date, time, and party size and we'll have your table ready." />
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav" aria-label="Primary">
+      <div class="wrap">
+        <a href="index.html" class="brand">Divine<span>RESTAURANT</span></a>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </label>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li class="nav-cta"><a href="booking.html" class="btn btn-primary">Book a Table</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header" style="--header-img:url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1800&q=80');">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Booking</span></div>
+        <div class="eyebrow">Reserve Your Table</div>
+        <h1>We'll have your table ready</h1>
+        <p>Fill in your details below. This form is for demonstration purposes only — no reservation is stored on a server.</p>
+      </div>
+    </section>
+
+    <section class="booking-section">
+      <div class="wrap">
+
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fullname">Full Name <span class="required">*</span></label>
+              <input type="text" id="fullname" name="fullname" placeholder="Jordan Reyes" required autocomplete="name" />
+              <span class="form-error" id="error-fullname"></span>
+            </div>
+            <div class="form-field">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+              <span class="form-error" id="error-email"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required autocomplete="tel" />
+              <span class="form-error" id="error-phone"></span>
+            </div>
+            <div class="form-field">
+              <label for="guests">Number of Guests <span class="required">*</span></label>
+              <select id="guests" name="guests" required>
+                <option value="">Select guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6+">6+ Guests</option>
+              </select>
+              <span class="form-error" id="error-guests"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="date">Date <span class="required">*</span></label>
+              <input type="date" id="date" name="date" required />
+              <span class="form-error" id="error-date"></span>
+            </div>
+            <div class="form-field">
+              <label for="time">Time <span class="required">*</span></label>
+              <input type="time" id="time" name="time" required />
+              <span class="form-error" id="error-time"></span>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="request">Special Request</label>
+            <textarea id="request" name="request" placeholder="Window seat, anniversary, dietary needs..."></textarea>
+            <span class="form-hint">Optional — let us know how we can make your visit better.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Reserve a Table</button>
+
+          <div class="form-success" id="form-success" role="status">
+            Thank you — your reservation request has been noted. This is a demo form, so no booking has actually been saved; please call us to confirm a real reservation.
+          </div>
+        </form>
+
+        <div class="booking-info">
+          <div class="info-card">
+            <h3>Opening Hours</h3>
+            <div class="hours-row"><span>Monday – Friday</span><span>11:00 AM – 10:30 PM</span></div>
+            <div class="hours-row"><span>Saturday – Sunday</span><span>10:00 AM – 11:30 PM</span></div>
+          </div>
+
+          <div class="info-card">
+            <h3>Good to Know</h3>
+            <div class="hours-row"><span>Large parties</span><span>Call ahead</span></div>
+            <div class="hours-row"><span>Dress code</span><span>Smart casual</span></div>
+            <div class="hours-row"><span>Parking</span><span>Valet available</span></div>
+          </div>
+
+          <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=800&q=80" alt="Elegantly set table waiting for guests" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="brand">Divine<span>RESTAURANT</span></a>
+          <p>A chef-driven dining room serving seasonal, ingredient-led cuisine in a warm, unhurried space.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Divine Restaurant on Instagram">IG</a>
+            <a href="#" aria-label="Divine Restaurant on Facebook">FB</a>
+            <a href="#" aria-label="Divine Restaurant on X">X</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="booking.html">Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>221 Magnolia Street</li>
+            <li>Ludhiana, Punjab, India</li>
+            <li>+91 98765 43210</li>
+            <li>hello@divinerestaurant.example</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Opening Hours</h4>
+          <ul>
+            <li>Mon – Fri: 11:00 AM – 10:30 PM</li>
+            <li>Sat – Sun: 10:00 AM – 11:30 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Divine Restaurant. All rights reserved.</span>
+        <span>Designed for a fine-dining experience, online.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
