@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Calendar, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { MENU_ITEMS } from "@/data/menuData";
 import DishCard from "@/components/DishCard";
+import { DivineSymbol } from "@/components/DivineLogo";
 
 export default function HomePage() {
   const featuredDishes = MENU_ITEMS.slice(0, 6);
@@ -25,10 +26,17 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+          {/* Logo Symbol Emblem */}
+          <div className="flex justify-center mb-5">
+            <div className="p-3 rounded-full bg-white/5 border border-[#ad8340]/30 shadow-lg backdrop-blur-sm">
+              <DivineSymbol size={54} />
+            </div>
+          </div>
+
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="w-8 h-[1px] bg-[#ad8340]" />
             <span className="text-xs uppercase tracking-[0.25em] text-[#d8b877] font-medium">
-              Est. Fine Dining, Since Forever Ago
+              Experience the Taste &bull; Est. Fine Dining
             </span>
             <span className="w-8 h-[1px] bg-[#ad8340]" />
           </div>

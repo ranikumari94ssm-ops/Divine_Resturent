@@ -22,10 +22,17 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Divine Restaurant — Fine Dining & Table Reservations",
+  title: "Divine Restaurant — Experience the Taste",
   description:
-    "Divine Restaurant is a chef-driven dining house serving seasonal, ingredient-led cuisine in Ludhiana, Punjab. Browse our menu, reserve a table, and order online.",
-  keywords: ["fine dining", "restaurant reservations", "Ludhiana restaurant", "seasonal menu", "online table booking"],
+    "Divine Restaurant is a chef-driven dining house serving seasonal, ingredient-led cuisine in Ludhiana, Punjab. Experience the taste with our seasonal menu, reserve a table, or order online.",
+  keywords: ["Divine Restaurant", "Experience the Taste", "fine dining", "restaurant reservations", "Ludhiana restaurant", "seasonal menu", "online table booking"],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

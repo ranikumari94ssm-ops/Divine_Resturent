@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import DivineLogo from "@/components/DivineLogo";
 
 export default function Footer() {
   return (
@@ -8,13 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Col */}
           <div className="space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-serif text-3xl font-semibold text-[#f7f2e7]">
-                Divine
-              </span>
-              <span className="block text-[11px] tracking-[0.25em] text-[#ad8340] uppercase -mt-1">
-                Restaurant
-              </span>
+            <Link href="/" className="inline-block group">
+              <DivineLogo variant="horizontal" symbolSize={38} showTagline={true} />
             </Link>
             <p className="text-sm text-[#f7f2e7]/70 leading-relaxed font-light">
               A chef-driven dining room serving seasonal, ingredient-led cuisine

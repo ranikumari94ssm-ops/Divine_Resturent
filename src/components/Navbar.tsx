@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag, Menu, X, Calendar } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import DivineLogo from "@/components/DivineLogo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -22,14 +23,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-[#16221b] border-b border-[#f7f2e7]/15 text-[#f7f2e7] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand */}
-        <Link href="/" className="flex flex-col group">
-          <span className="font-serif text-2xl tracking-wider font-semibold text-[#f7f2e7] group-hover:text-[#d8b877] transition-colors">
-            Divine
-          </span>
-          <span className="text-[10px] tracking-[0.25em] text-[#ad8340] font-sans font-medium uppercase -mt-1">
-            Restaurant
-          </span>
+        {/* Brand Logo with Lotus Emblem */}
+        <Link href="/" className="group">
+          <DivineLogo variant="horizontal" symbolSize={38} />
         </Link>
 
         {/* Desktop Navigation Links */}
