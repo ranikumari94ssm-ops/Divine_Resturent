@@ -1,0 +1,140 @@
+// Divine Restaurant — Production Prisma Database Schema
+// Database: PostgreSQL (Neon / Supabase / Railway)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  STAFF
+  ADMIN
+}
+
+enum OrderStatus {
+  RECEIVED
+  PREPARING
+  READY
+  DELIVERED
+  CANCELLED
+}
+
+enum OrderType {
+  DINE_IN
+  PICKUP
+  DELIVERY
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  SEATED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id           String        @id @default(uuid())
+  fullName     String
+  email        String        @unique
+  phone        String?
+  role         Role          @default(CUSTOMER)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  bookings     Booking[]
+  orders       Order[]
+}
+
+model Category {
+  id           Int           @id @default(autoincrement())
+  name         String
+  slug         String        @unique
+  displayOrder Int           @default(0)
+  items        MenuItem[]
+}
+
+model MenuItem {
+  id           String        @id @default(uuid())
+  name         String
+  description  String
+  price        Decimal       @db.Decimal(10, 2)
+  image        String
+  categoryId   Int
+  category     Category      @relation(fields: [categoryId], references: [id])
+  isVegetarian Boolean       @default(false)
+  isGlutenFree Boolean       @default(false)
+  isChefSpecial Boolean      @default(false)
+  isAvailable  Boolean       @default(true)
+  orderItems   OrderItem[]
+  createdAt    DateTime      @default(now())
+}
+
+model RestaurantTable {
+  id           Int           @id @default(autoincrement())
+  tableNumber  String        @unique
+  capacity     Int
+  location     String        @default("main_dining") // window, patio, private
+  isActive     Boolean       @default(true)
+  bookings     Booking[]
+}
+
+model Booking {
+  id             String          @id @default(uuid())
+  bookingCode    String          @unique // e.g. DIV-8921
+  userId         String?
+  user           User?           @relation(fields: [userId], references: [id])
+  tableId        Int?
+  table          RestaurantTable? @relation(fields: [tableId], references: [id])
+  guestName      String
+  guestEmail     String
+  guestPhone     String
+  guestCount     Int
+  bookingDate    DateTime        @db.Date
+  bookingTime    String
+  specialRequest String?
+  status         BookingStatus   @default(CONFIRMED)
+  createdAt      DateTime        @default(now())
+}
+
+model Order {
+  id              String         @id @default(uuid())
+  orderNumber     String         @unique // e.g. DVR-109283
+  userId          String?
+  user            User?          @relation(fields: [userId], references: [id])
+  customerName    String
+  customerPhone   String
+  orderType       OrderType      @default(PICKUP)
+  deliveryAddress String?
+  subtotal        Decimal        @db.Decimal(10, 2)
+  taxAmount       Decimal        @db.Decimal(10, 2)
+  deliveryFee     Decimal        @default(0) @db.Decimal(10, 2)
+  grandTotal      Decimal        @db.Decimal(10, 2)
+  paymentStatus   PaymentStatus  @default(PENDING)
+  paymentId       String?        // Razorpay / Stripe transaction ID
+  orderStatus     OrderStatus    @default(RECEIVED)
+  items           OrderItem[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+model OrderItem {
+  id         String    @id @default(uuid())
+  orderId    String
+  order      Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuItemId String
+  menuItem   MenuItem  @relation(fields: [menuItemId], references: [id])
+  quantity   Int       @default(1)
+  unitPrice  Decimal   @db.Decimal(10, 2)
+}

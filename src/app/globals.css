@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #f7f2e7;
+  --color-brand-bg-alt: #efe6d2;
+  --color-brand-surface: #fffdf8;
+  --color-brand-dark: #16221b;
+  --color-brand-dark-alt: #0f1712;
+  --color-brand-text: #26221d;
+  --color-brand-muted: #6c6255;
+  --color-brand-gold: #ad8340;
+  --color-brand-gold-light: #d8b877;
+  --color-brand-wine: #6d1f27;
+
+  --font-display: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-body), "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --color-bg: #f7f2e7;
+  --color-bg-alt: #efe6d2;
+  --color-surface: #fffdf8;
+  --color-dark: #16221b;
+  --color-dark-alt: #0f1712;
+  --color-text: #26221d;
+  --color-muted: #6c6255;
+  --color-gold: #ad8340;
+  --color-gold-light: #d8b877;
+  --color-wine: #6d1f27;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Accessible focus outline */
+*:focus-visible {
+  outline: 2px solid #ad8340;
+  outline-offset: 3px;
+}
